@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkers Pro</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Checkers Pro</h1>
+    </header>
+
+    <main id="mainMenu">
+      <section class="mode-section">
+        <h2>🎮 Offline Mode</h2>
+        <button onclick="startOffline()">2 Players</button>
+        <button onclick="startVsAI()">Play vs AI</button>
+      </section>
+
+      <hr />
+
+      <section class="mode-section">
+        <h2>🌐 Online Mode</h2>
+        <input type="text" id="playerName" placeholder="Enter your name" />
+        <div class="online-controls">
+          <button onclick="showOnlineMenu()">Play Online</button>
+          <div id="onlineMenu" class="online-menu hidden">
+            <button onclick="createRoom()">Create Room</button>
+            <input id="roomInput" placeholder="Enter Room ID" />
+            <button onclick="joinRoom()">Join Room</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="waitingScreen" class="hidden">
+      <p>⏳ Waiting for player to join the room...</p>
+    </div>
+
+    <section id="playerInfo" class="hidden">
+      <div id="playerNames">
+        <span>🟥 <strong id="player1Name">Player 1</strong></span> vs
+        <span>⚫ <strong id="player2Name">Player 2</strong></span>
+      </div>
+      <div id="gameStatus">
+        <span id="turnIndicator">Red's Turn</span>
+        <span id="timer">Time left: 30s</span>
+      </div>
+    </section>
+
+    <canvas id="gameCanvas" width="600" height="600" class="hidden"></canvas>
+    <div id="endMessage" class="hidden"></div>
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
